@@ -6,43 +6,59 @@
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
     <title>Login Page</title>
-    
+   
 </head>
 <body>
     <h2>Login Page</h2>
 
     <div id="Login">
+
+        @using (Html.BeginForm())
+        {
+            @Html.AntiForgeryToken()
+
+
+            <form>
+
+                <div id="login">
+                    @Html.LabelFor(model => model.Email)
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", placeholder = "Email" } })
+
+                    @Html.LabelFor(model => model.Password)
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @class = "form-control", placeholder = "Password", @type = "password" } })
+
+
+                    <button type="submit"  id="btnLogin">
+                        Login
+                    </button>
+                    
+                </div>
+
+            </form>
+        }
+        </div>
         
-        <form >
 
-            <div  data-validate="Enter username">
-                <input  id="email" :value="username" type="text" name="email" placeholder="User Email">
-                
-            </div>
 
-            <div  data-validate="Enter password">
-                <input  id="password" type="password" name="pass" placeholder="Password">
-                
-            </div>
-
-            <div >
-                <button type="button" id="btnLogin">
-                    Login
-                </button>
-            </div>
-
-        </form>
-    </div>
-   
-        <script src="~/Scripts/vue.min.js"></script>
+<script src="~/Scripts/vue.min.js"></script>
 
     <script>
-        var main = new vue(
-            el: "#Login",
+
+       
+        var login = new Vue({
+            el: "#login",
             data: {
-            username :""
-        }
-        );
+                email: "",
+                password: ""
+
+            },
+            methods: {
+                myFunction() {
+                    location.replace("/Home/Index");
+                }
+            }
+
+        });
     </script>
 </body>
 </html>

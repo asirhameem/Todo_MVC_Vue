@@ -28,57 +28,28 @@ namespace TodoMVC.Controllers
         }
 
         [HttpPost]
-        public ActionResult Login(string email)
+        [ValidateAntiForgeryToken]
+        
+        public ActionResult Index(User user)
         {
             Session.Clear();
 
-            var userInfo = users.GetUserByEmail(email);
+            var userInfo = users.GetUserByEmail(user.Email);
             if(userInfo == null)
             {
                 return RedirectToAction("Index");
             }
-            else
+            else if( userInfo.Email == user.Email && userInfo.Password == user.Password)
             {
+                Session["Email"] = userInfo.Name;
+                Session["Id"] = userInfo.Id;
                 return RedirectToAction("AllTasks");
             }
-            /*return View(userInfo);*/
-
-            /* var user = user.
-             if (ModelState.IsValid)
-             {
-                 if (logins == null)
-                 {
-                     TempData["Messege"] = "Username or Password is incorrect";
-
-
-                     return View("Login", u);
-                 }
-                 else
-                 {
-                     TempData["Messege"] = null;
-                     if (logins.Type == "Instructor")
-                     {
-                         Session["uname"] = logins.Name;
-                         Session["id"] = logins.Id;
-                         return RedirectToAction("Index");
-                     }
-                     else if (logins.Type == "Student")
-                     {
-                         Session["uname"] = logins.Name;
-                         Session["id"] = logins.Id;
-                         return RedirectToAction("Index");
-                     }
-                     else if (logins.Type == "Admin")
-                     {
-                         Session["uname"] = logins.Name;
-                         return RedirectToAction("CourseDetails", "Admin");
-                     }
-
-                 }
-
-             }
-             */
-
+            else
+            {
+                return View("Index");
+            }
+            
 
         }
     }
