@@ -1,0 +1,56 @@
+﻿@model  IEnumerable<TodoMVC.Models.Task>
+
+@{
+    ViewBag.Title = "AllTasks";
+}
+
+<h2>AllTasks</h2>
+
+<div>
+    <h4>Task</h4>
+    <hr />
+
+
+     
+    <table>
+        <thead>
+            <tr>
+                <th>Task Name</th>
+                <th>Task Deadline</th>
+                <th>Task Status</th>
+
+            </tr>
+
+        </thead>
+        @foreach (var task in Model)
+        {
+            <tbody>
+                <tr>
+                    <td>
+                        @Html.DisplayFor(modelItem => task.TaskName)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => task.TaskDeadline)
+                    </td>
+                    <td>
+                        @Html.DisplayFor(modelItem => task.TaskStatus)
+                    </td>
+
+                    <td>
+                        @Html.ActionLink("Edit", "Edit", new { id = task.Id }) |
+                        @Html.ActionLink("Details", "Details", new { id = task.Id }) |
+                        @Html.ActionLink("Delete", "Delete", new { id = task.Id })
+                    </td>
+                </tr>
+            </tbody>
+        }
+        </table>
+    
+
+
+    
+
+
+
+    
+</div>

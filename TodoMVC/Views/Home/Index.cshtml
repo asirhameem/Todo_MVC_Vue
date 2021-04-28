@@ -1,0 +1,49 @@
+﻿@model TodoMVC.Models.User
+
+@{
+    ViewBag.Title = "Index";
+}
+<html xmlns="http://www.w3.org/1999/xhtml">
+<head>
+    <title>Login Page</title>
+    
+</head>
+<body>
+    <h2>Login Page</h2>
+
+    <div id="Login">
+        
+        <form >
+
+            <div  data-validate="Enter username">
+                <input  id="email" :value="username" type="text" name="email" placeholder="User Email">
+                
+            </div>
+
+            <div  data-validate="Enter password">
+                <input  id="password" type="password" name="pass" placeholder="Password">
+                
+            </div>
+
+            <div >
+                <button type="button" id="btnLogin">
+                    Login
+                </button>
+            </div>
+
+        </form>
+    </div>
+   
+        <script src="~/Scripts/vue.min.js"></script>
+
+    <script>
+        var main = new vue(
+            el: "#Login",
+            data: {
+            username :""
+        }
+        );
+    </script>
+</body>
+</html>
+
