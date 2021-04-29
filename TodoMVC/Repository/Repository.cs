@@ -38,7 +38,9 @@ namespace TodoMVC.Repository
             context.SaveChanges();
         }
 
-        public T GetByID(int id)
+        
+
+            public T GetByID(int id)
         {
             return context.Set<T>().Find(id);
         }

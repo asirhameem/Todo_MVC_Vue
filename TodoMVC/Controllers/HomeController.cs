@@ -29,7 +29,7 @@ namespace TodoMVC.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        
+        //Login Controller
         public ActionResult Index(User user)
         {
             Session.Clear();
@@ -49,8 +49,23 @@ namespace TodoMVC.Controllers
             {
                 return View("Index");
             }
-            
-
         }
+
+        [HttpGet]
+        public ActionResult Edit(int id)
+        {
+            var taskEdit = tasks.GetByID(id);
+            taskEdit.TaskStatus = "Done";
+            tasks.Edit(taskEdit);
+            return RedirectToAction("AllTasks");
+        }
+
+        [HttpGet]
+        public ActionResult Delete(int id)
+        {
+            tasks.Delete(id);
+            return RedirectToAction("AllTasks");
+        }
+
     }
 }
