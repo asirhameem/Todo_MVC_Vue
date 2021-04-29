@@ -11,7 +11,7 @@
     <hr />
 
 
-     
+
     <table>
         <thead>
             <tr>
@@ -37,20 +37,65 @@
                     </td>
 
                     <td>
+
                         @Html.ActionLink("Edit", "Edit", new { id = task.Id }) |
-                        @Html.ActionLink("Details", "Details", new { id = task.Id }) |
                         @Html.ActionLink("Delete", "Delete", new { id = task.Id })
+
                     </td>
                 </tr>
             </tbody>
         }
-        </table>
-    
+    </table>
+
+    <div id="update">
+        <input type="text" v-model="id" value="" />
+        <button v-on:click="Complete">Complete</button>
+
+        
+    </div>
+
+    <div id="delete">
+        <input type="text" v-model="id" value="" />
+        <button v-on:click="Delete">Delete</button>
+    </div>
 
 
-    
+        <script src="~/Scripts/vue.min.js"></script>
+
+        <script>
+
+
+            var completeTask = new Vue({
+                el: "#update",
+                data: {
+                    id: ""                    
+
+                },
+                methods: {
+                    Complete() {
+                        location.replace("/Home/Edit/" + this.id);
+                    }
+                }
+
+            });
+
+
+            var deleteTask = new Vue({
+                el: "#delete",
+                data: {
+                    id: ""
+
+                },
+                methods: {
+                    Delete() {
+                        location.replace("/Home/Delete/" + this.id);
+                    }
+                }
+
+            });
+        </script>
 
 
 
-    
-</div>
+
+    </div>
