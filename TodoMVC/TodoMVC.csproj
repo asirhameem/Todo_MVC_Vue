@@ -155,6 +155,8 @@
     <Content Include="Scripts\jquery-3.4.1.min.map" />
     <Content Include="Views\Home\Edit.cshtml" />
     <Content Include="Views\Home\Delete.cshtml" />
+    <Content Include="Views\Home\PendingTasks.cshtml" />
+    <Content Include="Views\Home\CreateTask.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

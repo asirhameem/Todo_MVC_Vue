@@ -15,5 +15,10 @@ namespace TodoMVC.Repository
             context.SaveChanges();
 
         }
+
+        public List<Task> PendingTask()
+        {
+            return this.context.Tasks.Where(x => x.TaskStatus == "Pending").ToList();
+        }
     }
 }

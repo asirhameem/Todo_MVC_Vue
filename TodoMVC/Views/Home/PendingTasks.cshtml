@@ -1,16 +1,14 @@
-﻿@model  IEnumerable<TodoMVC.Models.Task>
+﻿@model IEnumerable<TodoMVC.Models.Task>
 
 @{
-    ViewBag.Title = "AllTasks";
+    ViewBag.Title = "PendingTasks";
 }
 
-<h2>AllTasks</h2>
+<h2>PendingTasks</h2>
 
 <div>
     <h4>Task</h4>
     <hr />
-
-
 
     <table>
         <thead>
@@ -49,71 +47,26 @@
 
     </div>
 
-    <div id="delete">
-        <hr />
-        <input type="text" v-model="id" value="" />
-        <button v-on:click="Delete">Delete</button>
-    </div>
-
-    <div id="create">
-        <hr />
-        
-        <button v-on:click="Create">Create</button>
-    </div>
-
-
     <script src="~/Scripts/vue.min.js"></script>
 
     <script>
 
 
-        var completeTask = new Vue({
+        var complete = new Vue({
             el: "#update",
             data: {
                 id: ""
+               
 
             },
             methods: {
                 Complete() {
-                    location.replace("/Home/Edit/" + this.id);
-                }
-                
-            }
-
-        });
-
-        var createTask = new Vue({
-
-            el: "#create",
-            data: {
-                
-
-            },
-            methods: {
-                Create() {
-                    location.replace("/Home/CreateTask");
-                }
-            }
-
-        });
-
-
-        var deleteTask = new Vue({
-            el: "#delete",
-            data: {
-                id: ""
-
-            },
-            methods: {
-                Delete() {
-                    location.replace("/Home/Delete/" + this.id);
+                    location.replace("/Home/EditPending/" + this.id);
                 }
             }
 
         });
     </script>
 
-
-
-
 </div>
+
